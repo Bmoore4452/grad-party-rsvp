@@ -1,67 +1,46 @@
 # Graduation Party RSVP
 
-Free, static RSVP site for Brian's graduation party (July 18, 2026).
+Free, static RSVP site for Brian L. Moore's Mercer University graduation party (July 18, 2026, 4 PM · Essence Event Center · Winnsboro, SC). RSVPs requested by July 4, 2026.
 
-**Stack:** GitHub Pages (host) · Supabase (database + auth) · vanilla HTML/JS
+**Stack:** GitHub Pages (host) · Supabase (database + auth) · vanilla HTML/JS + Tailwind via CDN
 **Cost:** $0
+
+## Live URLs
+
+| Page | Audience | URL |
+|---|---|---|
+| Public RSVP form | Guests | https://bmoore4452.github.io/grad-party-rsvp/ |
+| Admin dashboard | Brian, mom, sister | https://bmoore4452.github.io/grad-party-rsvp/admin.html |
+| Supabase project | Brian | https://supabase.com/dashboard/project/fltcdlizijkelvolldtc |
+| GitHub repo | — | https://github.com/Bmoore4452/grad-party-rsvp |
 
 ## Files
 
-- `index.html` — public RSVP page guests submit
-- `admin.html` — password-protected dashboard for Brian, mom, and sister to view/manage RSVPs
-- `mercer-logo.png` · `grad.jpg` — assets
-- `supabase/` — Supabase config + SQL migrations (version-controlled schema)
+- `index.html` — public RSVP page guests submit (hero photo, party details, RSVP form, floating "Scroll to RSVP" cue)
+- `admin.html` — password-protected dashboard with totals, sort/search, "contacted" checkbox, CSV export, and an owner-only delete column
+- `mercer-logo.png` · `grad.jpg` — branding + hero photo
+- `supabase/` — config + version-controlled SQL migrations:
+  - `20260514040709_init_rsvps_table.sql` — `rsvps` table + RLS insert policy for anonymous users
+  - `20260514042141_add_admin_access.sql` — `admins` whitelist table, `contacted` tracking columns, admin SELECT/UPDATE policies
+  - `20260514043659_brian_delete_policy.sql` — DELETE policy gated to `brianlmoore803@gmail.com` only
 
-## Setup checklist
+## Security model (how the live site stays safe)
 
-The Supabase project is already created and linked: `fltcdlizijkelvolldtc`.
+- The Supabase **anon key** is checked into both HTML files. That's intentional — it's designed to be public. **RLS** is what protects the data:
+  - **Anonymous** (RSVP form): can INSERT new rsvps. Cannot SELECT, UPDATE, or DELETE.
+  - **Authenticated admin** (email in `public.admins`): can SELECT and UPDATE rsvps. UPDATE is used for the "contacted" checkbox.
+  - **Authenticated owner** (`brianlmoore803@gmail.com` only): can also DELETE rsvps.
+- The Supabase **service_role key** is not used anywhere in this site.
+- Public sign-ups are **disabled** in Supabase (Authentication → Sign In / Providers → "Allow new users to sign up" = OFF), so no random Google account can register and probe RLS.
 
-### 1. Database (✅ done if you ran `supabase db push`)
+## Contact numbers (intentionally split)
 
-Schema lives in `supabase/migrations/`. To re-apply or apply on a fresh project:
+- **Public RSVP page** points guests to mom Virginia at **803-727-7751** (the party planner).
+- **Admin login page** points mom and sister to Brian at **803-727-7750** for password resets.
 
-```bash
-supabase link --project-ref fltcdlizijkelvolldtc
-supabase db push --include-all
-```
+## Operational tasks
 
-### 2. Create admin accounts (one-time, ~2 min)
-
-In the Supabase Dashboard → Authentication → Users → "Add user" → "Create new user":
-
-| Email | Who | Password |
-|---|---|---|
-| `brianlmoore803@gmail.com` | Brian | Choose a strong one |
-| `anyhow853@gmail.com` | Mom (Virginia) | Choose one, share with her |
-| `mishondycharles04@gmail.com` | Sister | Choose one, share with her |
-
-For each user, **check "Auto Confirm User"** so they can log in without clicking an email link.
-
-### 3. Lock down sign-ups (one-time)
-
-By default Supabase lets anyone sign up. We want only the three accounts above to exist.
-
-Supabase Dashboard → Authentication → Providers → **Email** → toggle **"Enable Signups"** off → Save.
-
-(The admins whitelist also blocks unauthorized accounts from seeing data, but disabling open sign-ups is defense in depth.)
-
-### 4. GitHub Pages (5 min)
-
-1. Create a new **public** GitHub repo (e.g. `grad-party-rsvp`).
-2. Push these files.
-3. Repo Settings → Pages → Source: `main` branch, `/root`. Save.
-4. Site goes live at `https://YOURUSER.github.io/REPO/` in ~1 min.
-5. Admin URL: `https://YOURUSER.github.io/REPO/admin.html`
-
-## How the security model works
-
-- The Supabase **anon key** is in `index.html` and `admin.html`. It's safe to expose — RLS policies enforce what it can do:
-  - Anonymous (RSVP form): can INSERT new rsvps, nothing else.
-  - Authenticated admins (in the `admins` table): can SELECT and UPDATE rsvps.
-- The **service_role key** is never used in this site. We don't need it.
-- Admin emails are stored in the `admins` table. Adding a new admin = inserting one row + creating that user in Supabase Auth.
-
-## Adding or removing an admin later
+### Add or remove an admin
 
 ```sql
 -- Add
@@ -70,14 +49,31 @@ insert into public.admins (email) values ('newperson@example.com');
 delete from public.admins where email = 'oldperson@example.com';
 ```
 
-Run that in the Supabase SQL Editor. (Also create/delete the matching user in Authentication → Users.)
+Run in Supabase SQL Editor. Also create/delete the matching user in **Authentication → Users**.
 
-## After the party
+### Reset someone's password
 
-- Delete the Supabase project (Project Settings → General → Delete project).
-- Archive the GitHub repo.
-- $0 spent.
+Supabase Dashboard → Authentication → Users → click the user → "Send password recovery" (or set a new one directly with "Reset password").
+
+### Make a schema change
+
+```bash
+supabase migration new your_change_name
+# edit the new file in supabase/migrations/
+supabase db push --include-all
+git add supabase/migrations/ && git commit -m "..." && git push
+```
+
+### Deploy a code change
+
+Just `git push` to `main`. GitHub Pages rebuilds automatically (~1 minute). Watch builds at https://github.com/Bmoore4452/grad-party-rsvp/actions.
 
 ## Local testing
 
-Just double-click `index.html` or `admin.html`. They talk to your live Supabase project directly. Sign in to `admin.html` as `brianlmoore803@gmail.com` to verify the dashboard works.
+Double-click `index.html` or `admin.html`. Both talk to the live Supabase project — no local server needed. Submitting an RSVP from a local file writes to the same database as production.
+
+## After the party (cleanup)
+
+- Delete the Supabase project: Project Settings → General → Delete project.
+- Archive the GitHub repo: Settings → scroll to "Danger Zone" → Archive.
+- $0 spent.
