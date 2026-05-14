@@ -81,6 +81,39 @@
     a.link:hover { color: #f76800; }
     a.link:focus-visible { outline: 3px solid #222; outline-offset: 2px; border-radius: 4px; }
 
+    /* "Bless the grad" tip card — clearly optional Cash App ask */
+    .bless-card {
+      background: linear-gradient(135deg, #fff7ed 0%, #ffffff 60%);
+      border: 1px solid #fed7aa;
+      border-radius: 1rem;
+      padding: 1.5rem 1.75rem;
+    }
+    .bless-emoji { font-size: 1.85rem; line-height: 1; }
+    .cashapp-handle {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-weight: 700; font-size: 1.05rem;
+      background: #ffffff;
+      border: 1.5px dashed #f76800;
+      color: #cc5400;
+      padding: 0.5rem 0.9rem;
+      border-radius: 0.55rem;
+      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      transition: background-color .15s;
+    }
+    .cashapp-handle:hover { background: #fff7ed; }
+    .cashapp-handle:focus-visible { outline: 3px solid #222; outline-offset: 2px; }
+    .cashapp-handle.copied { background: #ecfccb; border-color: #65a30d; color: #3f6212; }
+    .btn-cashapp {
+      background: #00d54b; color: #ffffff;
+      padding: 0.55rem 1rem; border-radius: 0.55rem;
+      font-weight: 600; font-size: 0.9rem;
+      transition: background-color .15s;
+      display: inline-flex; align-items: center; gap: 0.35rem;
+    }
+    .btn-cashapp:hover { background: #00b840; }
+    .btn-cashapp:focus-visible { outline: 3px solid #222; outline-offset: 2px; }
+
     /* Floating "Scroll to RSVP" cue — guides users from the hero to the form */
     .scroll-cue {
       position: fixed;
@@ -260,6 +293,36 @@
       <p class="mt-2 text-sm text-mercer-ink">
         Or text Virginia at <a class="link" href="tel:+18037277751">803-727-7751</a>.
       </p>
+    </section>
+
+    <!-- BLESS THE GRAD: optional Cash App tip -->
+    <section class="bless-card mt-8 fade-in" aria-labelledby="bless-heading">
+      <div class="flex items-start gap-4">
+        <div class="bless-emoji" aria-hidden="true">🎓</div>
+        <div class="flex-1 min-w-0">
+          <h3 id="bless-heading" class="display text-2xl">Want to bless the grad?</h3>
+          <p class="mt-2 text-mercer-ink">
+            No gift expected — your presence is the celebration. But if you'd like to send Brian a little something to mark the milestone, his Cash App is open:
+          </p>
+
+          <div class="mt-4 flex flex-wrap items-center gap-3">
+            <img alt="Cash App"
+                 src="https://static.afterpaycdn.com/en-US/integration/logo/lockup/cashapp-color-black-32.svg"
+                 height="32" width="auto" />
+            <button id="cashapp-copy" type="button" class="cashapp-handle"
+                    aria-label="Copy Cash App handle $bmoore44 to clipboard">
+              <span id="cashapp-handle-text">$bmoore44</span>
+              <span aria-hidden="true">📋</span>
+            </button>
+            <a class="btn-cashapp" href="https://cash.app/$bmoore44" target="_blank" rel="noopener noreferrer"
+               aria-label="Open Cash App to send to $bmoore44 (opens in new tab)">
+              Open in Cash App <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <p class="mt-3 text-xs text-mercer-ink">Totally optional. Thank you either way! 🧡</p>
+        </div>
+      </div>
     </section>
 
     <footer class="mt-10 text-center text-xs text-mercer-ink">
@@ -457,6 +520,28 @@
         console.error(err);
       }
     });
+
+    // Click-to-copy for the Cash App handle
+    const cashCopyBtn = document.getElementById('cashapp-copy');
+    if (cashCopyBtn) {
+      cashCopyBtn.addEventListener('click', async () => {
+        const handleSpan = document.getElementById('cashapp-handle-text');
+        const original = handleSpan.textContent;
+        try {
+          await navigator.clipboard.writeText('$bmoore44');
+          cashCopyBtn.classList.add('copied');
+          handleSpan.textContent = 'Copied!';
+          setTimeout(() => {
+            handleSpan.textContent = original;
+            cashCopyBtn.classList.remove('copied');
+          }, 1500);
+        } catch (e) {
+          // Clipboard API blocked (older browser / file://) — the link beside it still works.
+          handleSpan.textContent = 'Select & copy';
+          setTimeout(() => { handleSpan.textContent = original; }, 1800);
+        }
+      });
+    }
 
     // Allow guests to resubmit from the thanks screen (H3: user control & freedom)
     document.getElementById('resubmit-btn').addEventListener('click', () => {
