@@ -80,6 +80,41 @@
     a.link { color: #cc5400; text-decoration: underline; text-underline-offset: 2px; }
     a.link:hover { color: #f76800; }
     a.link:focus-visible { outline: 3px solid #222; outline-offset: 2px; border-radius: 4px; }
+
+    /* Floating "Scroll to RSVP" cue — guides users from the hero to the form */
+    .scroll-cue {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #f76800;
+      color: #ffffff;
+      padding: 0.7rem 1.25rem;
+      border-radius: 999px;
+      box-shadow: 0 14px 35px -10px rgba(247, 104, 0, 0.55), 0 6px 16px -6px rgba(0,0,0,0.25);
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      font-weight: 600; font-size: 0.95rem;
+      z-index: 40; cursor: pointer; border: 0;
+      animation: cueBounce 2.2s ease-in-out infinite;
+      transition: opacity .35s ease, transform .35s ease;
+    }
+    .scroll-cue:hover { background: #e15e00; }
+    .scroll-cue:focus-visible { outline: 3px solid #222; outline-offset: 3px; }
+    .scroll-cue .arrow { display: inline-block; transition: transform .2s; }
+    .scroll-cue:hover .arrow { transform: translateY(2px); }
+    .scroll-cue.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(20px);
+      animation: none;
+    }
+    @keyframes cueBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(-7px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-cue { animation: none; }
+    }
   </style>
 </head>
 <body class="min-h-screen">
@@ -232,6 +267,12 @@
     </footer>
   </main>
 
+  <!-- Floating scroll-to-RSVP cue -->
+  <button id="scroll-cue" type="button" class="scroll-cue" aria-label="Scroll to the RSVP form">
+    <span>Scroll to RSVP</span>
+    <span class="arrow" aria-hidden="true">↓</span>
+  </button>
+
   <script>
     // ---- CONFIG: fill these in after creating your Supabase project ----
     const SUPABASE_URL = 'https://fltcdlizijkelvolldtc.supabase.co';
@@ -244,8 +285,23 @@
     const submitBtn = document.getElementById('submit-btn');
     const guestWrap = document.getElementById('guest-count-wrap');
 
-    // Autofocus first field for keyboard / screen-reader efficiency
-    window.addEventListener('load', () => document.getElementById('f-name').focus());
+    // Show the hero first — only focus the name field once the user opts in via the cue.
+    const scrollCue = document.getElementById('scroll-cue');
+    scrollCue.addEventListener('click', () => {
+      document.getElementById('form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Focus after the scroll animation roughly completes
+      setTimeout(() => document.getElementById('f-name').focus({ preventScroll: true }), 650);
+    });
+
+    // Auto-hide the cue once the form card enters view (whether by click or manual scroll).
+    if ('IntersectionObserver' in window) {
+      const cueObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          scrollCue.classList.toggle('is-hidden', entry.isIntersecting);
+        });
+      }, { threshold: 0.15 });
+      cueObserver.observe(document.getElementById('form-card'));
+    }
 
     // Attending radio card behavior
     const attendCards = document.querySelectorAll('.attend-card');
