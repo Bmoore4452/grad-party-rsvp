@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +9,9 @@
   <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
@@ -24,60 +27,207 @@
     };
   </script>
   <style>
-    body { font-family: 'Inter', system-ui, sans-serif; background: #fafafa; color: #222222; }
-    .display { font-family: 'Fraunces', serif; font-weight: 800; letter-spacing: -0.02em; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #fafafa;
+      color: #222222;
+    }
+
+    .display {
+      font-family: 'Fraunces', serif;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
     .input {
-      width: 100%; padding: 0.75rem 0.9rem; border: 1px solid #d4d4d4; border-radius: 0.6rem;
-      background: #ffffff; font-size: 1rem; color: #222; transition: border-color .15s, box-shadow .15s;
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      border: 1px solid #d4d4d4;
+      border-radius: 0.6rem;
+      background: #ffffff;
+      font-size: 1rem;
+      color: #222;
+      transition: border-color .15s, box-shadow .15s;
     }
-    .input::placeholder { color: #8a8a8a; }
-    .input:focus { outline: none; border-color: #f76800; box-shadow: 0 0 0 4px rgba(247,104,0,0.18); }
-    .input[aria-invalid="true"] { border-color: #b91c1c; box-shadow: 0 0 0 4px rgba(185,28,28,0.12); }
+
+    .input::placeholder {
+      color: #8a8a8a;
+    }
+
+    .input:focus {
+      outline: none;
+      border-color: #f76800;
+      box-shadow: 0 0 0 4px rgba(247, 104, 0, 0.18);
+    }
+
+    .input[aria-invalid="true"] {
+      border-color: #b91c1c;
+      box-shadow: 0 0 0 4px rgba(185, 28, 28, 0.12);
+    }
+
     .btn-primary {
-      background: #f76800; color: #fff; padding: 0.75rem 1.25rem; border-radius: 0.6rem;
-      font-weight: 600; transition: background-color .15s; font-size: 0.95rem;
+      background: #f76800;
+      color: #fff;
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.6rem;
+      font-weight: 600;
+      transition: background-color .15s;
+      font-size: 0.95rem;
     }
-    .btn-primary:hover { background: #e15e00; }
-    .btn-primary:focus-visible { outline: 3px solid #222; outline-offset: 2px; }
-    .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .btn-primary:hover {
+      background: #e15e00;
+    }
+
+    .btn-primary:focus-visible {
+      outline: 3px solid #222;
+      outline-offset: 2px;
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
     .btn-secondary {
-      background: #fff; color: #222; padding: 0.6rem 1rem; border-radius: 0.6rem;
-      border: 1px solid #d4d4d4; font-weight: 600; font-size: 0.9rem; transition: border-color .15s;
+      background: #fff;
+      color: #222;
+      padding: 0.6rem 1rem;
+      border-radius: 0.6rem;
+      border: 1px solid #d4d4d4;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: border-color .15s;
     }
-    .btn-secondary:hover { border-color: #f76800; }
-    .btn-secondary:focus-visible { outline: 3px solid #222; outline-offset: 2px; }
+
+    .btn-secondary:hover {
+      border-color: #f76800;
+    }
+
+    .btn-secondary:focus-visible {
+      outline: 3px solid #222;
+      outline-offset: 2px;
+    }
+
     .pill {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      padding: 0.3rem 0.65rem; border-radius: 999px; font-weight: 700; font-size: 0.75rem;
-      letter-spacing: 0.04em; text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
-    .pill-orange { background: rgba(247,104,0,0.12); color: #cc5400; }
-    .pill-green { background: rgba(22,163,74,0.12); color: #166534; }
-    .pill-red { background: rgba(185,28,28,0.10); color: #991b1b; }
-    .pill-gray { background: rgba(82,82,82,0.10); color: #525252; }
-    .stat-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 0.75rem; padding: 1rem 1.25rem; }
-    .req { color: #b91c1c; margin-left: 0.15rem; font-weight: 700; }
-    .field-error { color: #b91c1c; font-size: 0.85rem; margin-top: 0.4rem; min-height: 1.1rem; }
-    th.sortable { cursor: pointer; user-select: none; }
-    th.sortable:hover { color: #f76800; }
-    th.sortable .arrow { color: #f76800; margin-left: 0.3rem; font-size: 0.75rem; }
-    a.link { color: #cc5400; text-decoration: underline; text-underline-offset: 2px; }
-    a.link:hover { color: #f76800; }
+
+    .pill-orange {
+      background: rgba(247, 104, 0, 0.12);
+      color: #cc5400;
+    }
+
+    .pill-green {
+      background: rgba(22, 163, 74, 0.12);
+      color: #166534;
+    }
+
+    .pill-red {
+      background: rgba(185, 28, 28, 0.10);
+      color: #991b1b;
+    }
+
+    .pill-gray {
+      background: rgba(82, 82, 82, 0.10);
+      color: #525252;
+    }
+
+    .stat-card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+    }
+
+    .req {
+      color: #b91c1c;
+      margin-left: 0.15rem;
+      font-weight: 700;
+    }
+
+    .field-error {
+      color: #b91c1c;
+      font-size: 0.85rem;
+      margin-top: 0.4rem;
+      min-height: 1.1rem;
+    }
+
+    th.sortable {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    th.sortable:hover {
+      color: #f76800;
+    }
+
+    th.sortable .arrow {
+      color: #f76800;
+      margin-left: 0.3rem;
+      font-size: 0.75rem;
+    }
+
+    a.link {
+      color: #cc5400;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    a.link:hover {
+      color: #f76800;
+    }
+
     .toast {
-      position: fixed; bottom: 1.25rem; left: 50%; transform: translateX(-50%);
-      background: #222; color: #fff; padding: 0.75rem 1.25rem; border-radius: 0.6rem;
-      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.4); font-size: 0.9rem; z-index: 50;
+      position: fixed;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #222;
+      color: #fff;
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.6rem;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+      font-size: 0.9rem;
+      z-index: 50;
     }
-    .toast.error { background: #991b1b; }
-    .row-contacted { background: #fafaf5; }
+
+    .toast.error {
+      background: #991b1b;
+    }
+
+    .row-contacted {
+      background: #fafaf5;
+    }
+
     /* Visible focus ring on table checkboxes for keyboard users */
-    input[type="checkbox"]:focus-visible { outline: 3px solid #f76800; outline-offset: 2px; }
+    input[type="checkbox"]:focus-visible {
+      outline: 3px solid #f76800;
+      outline-offset: 2px;
+    }
+
     .sr-only {
-      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
-      clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
   </style>
 </head>
+
 <body class="min-h-screen">
   <!-- ============ TOP BAR ============ -->
   <header class="bg-white border-b border-gray-200">
@@ -90,7 +240,8 @@
         </div>
       </div>
       <div id="user-bar" class="hidden items-center gap-3 text-sm">
-        <span class="text-mercer-ink hidden sm:inline">Signed in as <span id="user-email" class="font-semibold text-mercer-black"></span></span>
+        <span class="text-mercer-ink hidden sm:inline">Signed in as <span id="user-email"
+            class="font-semibold text-mercer-black"></span></span>
         <button id="sign-out-btn" class="btn-secondary">Sign out</button>
       </div>
     </div>
@@ -99,21 +250,24 @@
   <main class="max-w-7xl mx-auto px-4 md:px-6 py-8">
 
     <!-- ============ LOGIN ============ -->
-    <section id="login-view" class="hidden max-w-md mx-auto bg-white rounded-2xl border border-gray-200 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)] p-8">
+    <section id="login-view"
+      class="hidden max-w-md mx-auto bg-white rounded-2xl border border-gray-200 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)] p-8">
       <h1 class="display text-3xl">Sign in</h1>
       <p class="mt-2 text-mercer-ink">Admin access only — for managing graduation RSVPs.</p>
 
       <form id="login-form" class="mt-6 space-y-4" novalidate>
         <div>
-          <label for="login-email" class="block text-sm font-medium mb-2">Email <span class="req" aria-hidden="true">*</span></label>
-          <input id="login-email" name="email" type="email" required autocomplete="email"
-                 aria-required="true" aria-describedby="err-login-email" class="input" placeholder="you@example.com" />
+          <label for="login-email" class="block text-sm font-medium mb-2">Email <span class="req"
+              aria-hidden="true">*</span></label>
+          <input id="login-email" name="email" type="email" required autocomplete="email" aria-required="true"
+            aria-describedby="err-login-email" class="input" placeholder="you@example.com" />
           <div id="err-login-email" class="field-error" aria-live="polite"></div>
         </div>
         <div>
-          <label for="login-password" class="block text-sm font-medium mb-2">Password <span class="req" aria-hidden="true">*</span></label>
+          <label for="login-password" class="block text-sm font-medium mb-2">Password <span class="req"
+              aria-hidden="true">*</span></label>
           <input id="login-password" name="password" type="password" required autocomplete="current-password"
-                 aria-required="true" aria-describedby="err-login-password" class="input" placeholder="Your password" />
+            aria-required="true" aria-describedby="err-login-password" class="input" placeholder="Your password" />
           <div id="err-login-password" class="field-error" aria-live="polite"></div>
         </div>
         <button id="login-btn" type="submit" class="btn-primary w-full">Sign in</button>
@@ -121,14 +275,16 @@
       </form>
 
       <p class="mt-6 text-xs text-mercer-ink">
-        Forgot your password? Text Brian at <a class="link" href="tel:+18037277751">803-727-7751</a> for a reset.
+        Forgot your password? Text Brian at <a class="link" href="tel:+18037277750">803-727-7750</a> for a reset.
       </p>
     </section>
 
     <!-- ============ NOT AUTHORIZED ============ -->
-    <section id="forbidden-view" class="hidden max-w-md mx-auto bg-white rounded-2xl border border-gray-200 p-8 text-center">
+    <section id="forbidden-view"
+      class="hidden max-w-md mx-auto bg-white rounded-2xl border border-gray-200 p-8 text-center">
       <div class="display text-2xl text-red-700">Not authorized</div>
-      <p class="mt-3 text-mercer-ink">This account is signed in, but it isn't on the admin list. If this is a mistake, contact Brian.</p>
+      <p class="mt-3 text-mercer-ink">This account is signed in, but it isn't on the admin list. If this is a mistake,
+        contact Brian.</p>
       <button id="forbidden-signout" class="btn-secondary mt-6">Sign out</button>
     </section>
 
@@ -159,7 +315,8 @@
         <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
           <div class="flex-1 relative">
             <label for="search" class="sr-only">Search RSVPs by name, contact, or message</label>
-            <input id="search" type="search" class="input" placeholder="Search by name, contact, or message…" autocomplete="off" />
+            <input id="search" type="search" class="input" placeholder="Search by name, contact, or message…"
+              autocomplete="off" />
           </div>
           <div class="flex items-center gap-2">
             <label for="filter-contacted" class="text-sm text-mercer-ink whitespace-nowrap">Show:</label>
@@ -178,7 +335,8 @@
             </select>
           </div>
           <button id="export-btn" class="btn-secondary whitespace-nowrap">Export CSV</button>
-          <button id="refresh-btn" class="btn-secondary whitespace-nowrap" aria-label="Refresh RSVP list">Refresh</button>
+          <button id="refresh-btn" class="btn-secondary whitespace-nowrap"
+            aria-label="Refresh RSVP list">Refresh</button>
         </div>
         <p id="result-count" class="mt-3 text-xs text-mercer-ink"></p>
       </div>
@@ -190,11 +348,14 @@
             <thead class="bg-gray-50 text-left text-xs uppercase tracking-wider text-mercer-ink">
               <tr>
                 <th class="px-4 py-3 sortable" data-sort="name" scope="col">Name <span class="arrow"></span></th>
-                <th class="px-4 py-3 sortable" data-sort="attending" scope="col">Attending <span class="arrow"></span></th>
-                <th class="px-4 py-3 sortable" data-sort="guest_count" scope="col">Guests <span class="arrow"></span></th>
+                <th class="px-4 py-3 sortable" data-sort="attending" scope="col">Attending <span class="arrow"></span>
+                </th>
+                <th class="px-4 py-3 sortable" data-sort="guest_count" scope="col">Guests <span class="arrow"></span>
+                </th>
                 <th class="px-4 py-3" scope="col">Contact</th>
                 <th class="px-4 py-3" scope="col">Message</th>
-                <th class="px-4 py-3 sortable" data-sort="created_at" scope="col">Submitted <span class="arrow">↓</span></th>
+                <th class="px-4 py-3 sortable" data-sort="created_at" scope="col">Submitted <span class="arrow">↓</span>
+                </th>
                 <th class="px-4 py-3" scope="col">Contacted</th>
                 <th id="delete-col-header" class="px-4 py-3 hidden" scope="col">Delete</th>
               </tr>
@@ -223,7 +384,7 @@
     // ---- CONFIG ----
     const SUPABASE_URL = 'https://fltcdlizijkelvolldtc.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZsdGNkbGl6aWprZWx2b2xsZHRjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3Mjc4MDYsImV4cCI6MjA5NDMwMzgwNn0.Ttmx2_PAfjSvHZ3yihDyveZ1UbAWFYxrqe7rmgTOBRo';
-    const HOST_PHONE = '803-727-7751';
+    const HOST_PHONE = '803-727-7750'; // Brian's number — admin reset/error fallback contact
     const OWNER_EMAIL = 'brianlmoore803@gmail.com'; // only this account sees the Delete column
     let isOwner = false;
     // ----------------
@@ -394,8 +555,8 @@
           <td class="px-4 py-3 font-semibold">${escapeHtml(r.name)}</td>
           <td class="px-4 py-3">
             ${r.attending
-              ? '<span class="pill pill-green">Yes</span>'
-              : '<span class="pill pill-red">No</span>'}
+          ? '<span class="pill pill-green">Yes</span>'
+          : '<span class="pill pill-red">No</span>'}
           </td>
           <td class="px-4 py-3">${r.attending ? escapeHtml(r.guest_count) : '—'}</td>
           <td class="px-4 py-3"><span class="break-all">${escapeHtml(r.contact)}</span></td>
@@ -515,7 +676,7 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `rsvps-${new Date().toISOString().slice(0,10)}.csv`;
+      a.download = `rsvps-${new Date().toISOString().slice(0, 10)}.csv`;
       a.click();
       URL.revokeObjectURL(url);
     });
@@ -529,4 +690,5 @@
     onSession();
   </script>
 </body>
+
 </html>
