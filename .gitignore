@@ -1,0 +1,7 @@
+.DS_Store
+.idea/
+.vscode/
+
+# Supabase CLI local state — not needed in the repo
+supabase/.temp/
+supabase/.branches/
