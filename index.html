@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +8,9 @@
   <link rel="icon" type="image/png" href="mercer-logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -31,55 +34,184 @@
     };
   </script>
   <style>
-    body { font-family: 'Inter', system-ui, sans-serif; background: #ffffff; color: #222222; }
-    .display { font-family: 'Fraunces', serif; font-weight: 800; letter-spacing: -0.02em; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #ffffff;
+      color: #222222;
+    }
+
+    .display {
+      font-family: 'Fraunces', serif;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
     .hero-grad {
       background:
-        radial-gradient(1200px 600px at 80% -10%, rgba(247,104,0,0.18), transparent 60%),
-        radial-gradient(800px 400px at -10% 20%, rgba(34,34,34,0.06), transparent 60%);
+        radial-gradient(1200px 600px at 80% -10%, rgba(247, 104, 0, 0.18), transparent 60%),
+        radial-gradient(800px 400px at -10% 20%, rgba(34, 34, 34, 0.06), transparent 60%);
     }
+
     .input {
-      width: 100%; padding: 0.85rem 1rem; border: 1px solid #d4d4d4; border-radius: 0.75rem;
-      background: #ffffff; transition: border-color .15s, box-shadow .15s; font-size: 1rem; color: #222;
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1px solid #d4d4d4;
+      border-radius: 0.75rem;
+      background: #ffffff;
+      transition: border-color .15s, box-shadow .15s;
+      font-size: 1rem;
+      color: #222;
     }
-    .input::placeholder { color: #8a8a8a; }
-    .input:focus { outline: none; border-color: #f76800; box-shadow: 0 0 0 4px rgba(247,104,0,0.18); }
-    .input[aria-invalid="true"] { border-color: #b91c1c; box-shadow: 0 0 0 4px rgba(185,28,28,0.12); }
+
+    .input::placeholder {
+      color: #8a8a8a;
+    }
+
+    .input:focus {
+      outline: none;
+      border-color: #f76800;
+      box-shadow: 0 0 0 4px rgba(247, 104, 0, 0.18);
+    }
+
+    .input[aria-invalid="true"] {
+      border-color: #b91c1c;
+      box-shadow: 0 0 0 4px rgba(185, 28, 28, 0.12);
+    }
+
     .btn-primary {
-      background: #f76800; color: #ffffff; padding: 0.95rem 1.5rem; border-radius: 0.75rem;
-      font-weight: 600; transition: transform .08s ease, background-color .15s; width: 100%;
+      background: #f76800;
+      color: #ffffff;
+      padding: 0.95rem 1.5rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      transition: transform .08s ease, background-color .15s;
+      width: 100%;
       font-size: 1rem;
     }
-    .btn-primary:hover { background: #e15e00; }
-    .btn-primary:active { transform: translateY(1px); }
-    .btn-primary:focus-visible { outline: 3px solid #222; outline-offset: 2px; }
-    .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .btn-primary:hover {
+      background: #e15e00;
+    }
+
+    .btn-primary:active {
+      transform: translateY(1px);
+    }
+
+    .btn-primary:focus-visible {
+      outline: 3px solid #222;
+      outline-offset: 2px;
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
     .pill {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      padding: 0.35rem 0.75rem; border-radius: 999px;
-      background: rgba(247,104,0,0.12); color: #cc5400; font-weight: 700; font-size: 0.8rem;
-      letter-spacing: 0.04em; text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(247, 104, 0, 0.12);
+      color: #cc5400;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
+
     .attend-card {
-      display: block; cursor: pointer; padding: 1rem; border: 1.5px solid #d4d4d4; border-radius: 0.75rem;
-      text-align: center; font-weight: 600; transition: all .15s; user-select: none; position: relative;
+      display: block;
+      cursor: pointer;
+      padding: 1rem;
+      border: 1.5px solid #d4d4d4;
+      border-radius: 0.75rem;
+      text-align: center;
+      font-weight: 600;
+      transition: all .15s;
+      user-select: none;
+      position: relative;
     }
-    .attend-card:hover { border-color: #f76800; }
+
+    .attend-card:hover {
+      border-color: #f76800;
+    }
+
     .attend-card .sr-only {
-      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
-      clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
+
     /* Keyboard focus indicator — visible when the hidden radio is focused */
-    .attend-card:has(input:focus-visible) { outline: 3px solid #222; outline-offset: 2px; }
-    .attend-card.selected.yes { background: #f76800; color: #ffffff; border-color: #f76800; }
-    .attend-card.selected.no { background: #222222; color: #ffffff; border-color: #222222; }
-    .req { color: #b91c1c; margin-left: 0.15rem; font-weight: 700; }
-    .field-error { color: #b91c1c; font-size: 0.85rem; margin-top: 0.4rem; min-height: 1.1rem; }
-    .fade-in { animation: fadeIn .4s ease both; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-    a.link { color: #222222; text-decoration: none; text-underline-offset: 2px; }
-    a.link:hover { color: #f76800; }
-    a.link:focus-visible { outline: 3px solid #222; outline-offset: 2px; border-radius: 4px; }
+    .attend-card:has(input:focus-visible) {
+      outline: 3px solid #222;
+      outline-offset: 2px;
+    }
+
+    .attend-card.selected.yes {
+      background: #f76800;
+      color: #ffffff;
+      border-color: #f76800;
+    }
+
+    .attend-card.selected.no {
+      background: #222222;
+      color: #ffffff;
+      border-color: #222222;
+    }
+
+    .req {
+      color: #b91c1c;
+      margin-left: 0.15rem;
+      font-weight: 700;
+    }
+
+    .field-error {
+      color: #b91c1c;
+      font-size: 0.85rem;
+      margin-top: 0.4rem;
+      min-height: 1.1rem;
+    }
+
+    .fade-in {
+      animation: fadeIn .4s ease both;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    a.link {
+      color: #222222;
+      text-decoration: none;
+      text-underline-offset: 2px;
+    }
+
+    a.link:hover {
+      color: #f76800;
+    }
+
+    a.link:focus-visible {
+      outline: 3px solid #222;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
 
     /* "Bless the grad" tip card — clearly optional Cash App ask */
     .bless-card {
@@ -88,31 +220,64 @@
       border-radius: 1rem;
       padding: 1.5rem 1.75rem;
     }
-    .bless-emoji { font-size: 1.85rem; line-height: 1; }
+
+    .bless-emoji {
+      font-size: 1.85rem;
+      line-height: 1;
+    }
+
     .cashapp-handle {
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-weight: 700; font-size: 1.05rem;
+      font-weight: 700;
+      font-size: 1.05rem;
       background: #ffffff;
       border: 1.5px dashed #f76800;
       color: #cc5400;
       padding: 0.5rem 0.9rem;
       border-radius: 0.55rem;
       cursor: pointer;
-      display: inline-flex; align-items: center; gap: 0.55rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
       transition: background-color .15s;
     }
-    .cashapp-handle:hover { background: #fff7ed; }
-    .cashapp-handle:focus-visible { outline: 3px solid #222; outline-offset: 2px; }
-    .cashapp-handle.copied { background: #ecfccb; border-color: #65a30d; color: #3f6212; }
+
+    .cashapp-handle:hover {
+      background: #fff7ed;
+    }
+
+    .cashapp-handle:focus-visible {
+      outline: 3px solid #222;
+      outline-offset: 2px;
+    }
+
+    .cashapp-handle.copied {
+      background: #ecfccb;
+      border-color: #65a30d;
+      color: #3f6212;
+    }
+
     .btn-cashapp {
-      background: #00d54b; color: #ffffff;
-      padding: 0.55rem 1rem; border-radius: 0.55rem;
-      font-weight: 600; font-size: 0.9rem;
+      background: #00d54b;
+      color: #ffffff;
+      padding: 0.55rem 1rem;
+      border-radius: 0.55rem;
+      font-weight: 600;
+      font-size: 0.9rem;
       transition: background-color .15s;
-      display: inline-flex; align-items: center; gap: 0.35rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
     }
-    .btn-cashapp:hover { background: #00b840; }
-    .btn-cashapp:focus-visible { outline: 3px solid #222; outline-offset: 2px; }
+
+    .btn-cashapp:hover {
+      background: #00b840;
+    }
+
+    .btn-cashapp:focus-visible {
+      outline: 3px solid #222;
+      outline-offset: 2px;
+    }
 
     /* Floating "Scroll to RSVP" cue — guides users from the hero to the form */
     .scroll-cue {
@@ -124,32 +289,64 @@
       color: #ffffff;
       padding: 0.7rem 1.25rem;
       border-radius: 999px;
-      box-shadow: 0 14px 35px -10px rgba(247, 104, 0, 0.55), 0 6px 16px -6px rgba(0,0,0,0.25);
-      display: inline-flex; align-items: center; gap: 0.55rem;
-      font-weight: 600; font-size: 0.95rem;
-      z-index: 40; cursor: pointer; border: 0;
+      box-shadow: 0 14px 35px -10px rgba(247, 104, 0, 0.55), 0 6px 16px -6px rgba(0, 0, 0, 0.25);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      z-index: 40;
+      cursor: pointer;
+      border: 0;
       animation: cueBounce 2.2s ease-in-out infinite;
       transition: opacity .35s ease, transform .35s ease;
     }
-    .scroll-cue:hover { background: #e15e00; }
-    .scroll-cue:focus-visible { outline: 3px solid #222; outline-offset: 3px; }
-    .scroll-cue .arrow { display: inline-block; transition: transform .2s; }
-    .scroll-cue:hover .arrow { transform: translateY(2px); }
+
+    .scroll-cue:hover {
+      background: #e15e00;
+    }
+
+    .scroll-cue:focus-visible {
+      outline: 3px solid #222;
+      outline-offset: 3px;
+    }
+
+    .scroll-cue .arrow {
+      display: inline-block;
+      transition: transform .2s;
+    }
+
+    .scroll-cue:hover .arrow {
+      transform: translateY(2px);
+    }
+
     .scroll-cue.is-hidden {
       opacity: 0;
       pointer-events: none;
       transform: translateX(-50%) translateY(20px);
       animation: none;
     }
+
     @keyframes cueBounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50%      { transform: translateX(-50%) translateY(-7px); }
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(-7px);
+      }
     }
+
     @media (prefers-reduced-motion: reduce) {
-      .scroll-cue { animation: none; }
+      .scroll-cue {
+        animation: none;
+      }
     }
   </style>
 </head>
+
 <body class="min-h-screen">
   <!-- HERO -->
   <header class="hero-grad">
@@ -191,10 +388,13 @@
             </div>
             <div class="p-4 rounded-xl border border-gray-200 md:col-span-3">
               <dt class="text-xs uppercase tracking-wider text-mercer-ink font-semibold">Address</dt>
-              <dd class="mt-1 font-semibold"><a class="link" href="https://www.google.com/maps/search/?api=1&query=Essence+Event+Center+1126+US-321+Winnsboro+SC" target="_blank" rel="noopener noreferrer">
-                1126 U.S. 321, Winnsboro, SC
-              </a>
-              <span class="sr-only">(opens Google Maps in a new tab)</span></dd>
+              <dd class="mt-1 font-semibold"><a class="link"
+                  href="https://www.google.com/maps/search/?api=1&query=Essence+Event+Center+1126+US-321+Winnsboro+SC"
+                  target="_blank" rel="noopener noreferrer">
+                  1126 U.S. 321, Winnsboro, SC
+                </a>
+                <span class="sr-only">(opens Google Maps in a new tab)</span>
+              </dd>
             </div>
           </dl>
           <p class="mt-6 text-sm text-mercer-ink">
@@ -204,7 +404,9 @@
         </div>
 
         <div class="relative">
-          <img src="grad.jpg" alt="Brian on graduation day at Mercer University, wearing cap and gown and holding a Mercer diploma" class="aspect-[4/5] w-full rounded-2xl object-cover shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)]" />
+          <img src="grad.jpg"
+            alt="Brian on graduation day at Mercer University, wearing cap and gown and holding a Mercer diploma"
+            class="aspect-[4/5] w-full rounded-2xl object-cover shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)]" />
           <div class="absolute -bottom-4 -left-4 bg-mercer-orange text-white px-4 py-2 rounded-xl shadow-lg">
             <div class="display text-lg leading-none">Class of 2026</div>
           </div>
@@ -215,9 +417,12 @@
 
   <!-- RSVP FORM -->
   <main class="max-w-2xl mx-auto px-6 pb-24 -mt-8">
-    <section id="form-card" class="bg-white rounded-2xl border border-gray-200 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)] p-6 md:p-10 fade-in" aria-labelledby="rsvp-heading">
+    <section id="form-card"
+      class="bg-white rounded-2xl border border-gray-200 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)] p-6 md:p-10 fade-in"
+      aria-labelledby="rsvp-heading">
       <h2 id="rsvp-heading" class="display text-3xl md:text-4xl">RSVP</h2>
-      <p class="mt-2 text-mercer-ink">Please respond by <span class="text-mercer-black font-semibold">July 4, 2026</span>.</p>
+      <p class="mt-2 text-mercer-ink">Please respond by <span class="text-mercer-black font-semibold">July 4,
+          2026</span>.</p>
       <p class="mt-1 text-xs text-mercer-ink"><span class="req" aria-hidden="true">*</span> indicates required</p>
 
       <form id="rsvp-form" class="mt-6 space-y-5" novalidate aria-describedby="form-status">
@@ -225,9 +430,8 @@
           <label for="f-name" class="block text-sm font-medium mb-2">
             Your name <span class="req" aria-hidden="true">*</span>
           </label>
-          <input id="f-name" name="name" type="text" required autocomplete="name"
-                 aria-required="true" aria-describedby="err-name"
-                 class="input" placeholder="Jane Doe" />
+          <input id="f-name" name="name" type="text" required autocomplete="name" aria-required="true"
+            aria-describedby="err-name" class="input" placeholder="Jane Doe" />
           <div id="err-name" class="field-error" aria-live="polite"></div>
         </div>
 
@@ -253,7 +457,7 @@
             Number of guests <span class="text-mercer-ink font-normal">(including you)</span>
           </label>
           <input id="f-guests" name="guest_count" type="number" min="1" max="20" value="1" inputmode="numeric"
-                 class="input" />
+            class="input" />
           <div id="err-guests" class="field-error" aria-live="polite"></div>
         </div>
 
@@ -261,9 +465,8 @@
           <label for="f-contact" class="block text-sm font-medium mb-2">
             Email or phone <span class="req" aria-hidden="true">*</span>
           </label>
-          <input id="f-contact" name="contact" type="text" required autocomplete="email tel"
-                 aria-required="true" aria-describedby="err-contact contact-hint"
-                 class="input" placeholder="you@example.com or 555-123-4567" />
+          <input id="f-contact" name="contact" type="text" required autocomplete="email tel" aria-required="true"
+            aria-describedby="err-contact contact-hint" class="input" placeholder="you@example.com or 555-123-4567" />
           <p id="contact-hint" class="text-xs text-mercer-ink mt-1">So we can reach you if anything changes.</p>
           <div id="err-contact" class="field-error" aria-live="polite"></div>
         </div>
@@ -273,7 +476,7 @@
             Message <span class="text-mercer-ink font-normal">(optional)</span>
           </label>
           <textarea id="f-message" name="message" rows="3" maxlength="500" class="input"
-                    placeholder="A note, a song request, anything!"></textarea>
+            placeholder="A note, a song request, anything!"></textarea>
         </div>
 
         <button id="submit-btn" type="submit" class="btn-primary">Send RSVP</button>
@@ -281,13 +484,16 @@
       </form>
     </section>
 
-    <section id="thanks-card" class="hidden bg-white rounded-2xl border border-gray-200 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)] p-10 text-center fade-in" aria-live="polite">
+    <section id="thanks-card"
+      class="hidden bg-white rounded-2xl border border-gray-200 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)] p-10 text-center fade-in"
+      aria-live="polite">
       <div class="display text-4xl text-mercer-orange">Thank you!</div>
       <p class="mt-3 text-mercer-black/85">
         Your RSVP has been received. We can't wait to celebrate with you.
       </p>
       <p class="mt-6 text-sm text-mercer-ink">
-        Need to update your response? <button type="button" id="resubmit-btn" class="link bg-transparent border-0 p-0 font-medium cursor-pointer">Submit again</button>
+        Need to update your response? <button type="button" id="resubmit-btn"
+          class="link bg-transparent border-0 p-0 font-medium cursor-pointer">Submit again</button>
         — we'll use the most recent one.
       </p>
       <p class="mt-2 text-sm text-mercer-ink">
@@ -302,20 +508,21 @@
         <div class="flex-1 min-w-0">
           <h3 id="bless-heading" class="display text-2xl">Want to bless the grad?</h3>
           <p class="mt-2 text-mercer-ink">
-            No gift expected — your presence is the celebration. But if you'd like to send Brian a little something to mark the milestone, his Cash App is open:
+            No gift required — your presence is the celebration. But if you'd like to send Brian a little something to
+            mark the milestone, his Cash App is open:
           </p>
 
           <div class="mt-4 flex flex-wrap items-center gap-3">
             <img alt="Cash App"
-                 src="https://static.afterpaycdn.com/en-US/integration/logo/lockup/cashapp-color-black-32.svg"
-                 height="32" width="auto" />
+              src="https://static.afterpaycdn.com/en-US/integration/logo/lockup/cashapp-color-black-32.svg" height="32"
+              width="auto" />
             <button id="cashapp-copy" type="button" class="cashapp-handle"
-                    aria-label="Copy Cash App handle $bmoore44 to clipboard">
+              aria-label="Copy Cash App handle $bmoore44 to clipboard">
               <span id="cashapp-handle-text">$bmoore44</span>
               <span aria-hidden="true">📋</span>
             </button>
             <a class="btn-cashapp" href="https://cash.app/$bmoore44" target="_blank" rel="noopener noreferrer"
-               aria-label="Open Cash App to send to $bmoore44 (opens in new tab)">
+              aria-label="Open Cash App to send to $bmoore44 (opens in new tab)">
               Open in Cash App <span aria-hidden="true">↗</span>
             </a>
           </div>
@@ -497,7 +704,7 @@
         });
         if (!res.ok) {
           let detail = '';
-          try { detail = (await res.text()).slice(0, 200); } catch {}
+          try { detail = (await res.text()).slice(0, 200); } catch { }
           if (res.status >= 500) {
             throw new Error(`Our server hiccuped (code ${res.status}). Please try again in a minute, or text Virginia at ${HOST_PHONE_DISPLAY}.`);
           } else if (res.status === 401 || res.status === 403) {
@@ -557,4 +764,5 @@
     });
   </script>
 </body>
+
 </html>
