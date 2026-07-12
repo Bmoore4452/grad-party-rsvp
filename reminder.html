@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>See You Saturday! · Brian L. Moore Graduation Party</title>
+  <link rel="icon" type="image/png" href="mercer-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            mercer: {
+              orange: '#f76800',
+              orangeDark: '#cc5400',
+              black: '#222222',
+              ink: '#525252', // accessible mute (≥4.5:1 on white)
+              gray: '#999999',
+            },
+          },
+          fontFamily: {
+            display: ['Fraunces', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #ffffff;
+      color: #222222;
+    }
+
+    .display {
+      font-family: 'Fraunces', serif;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-grad {
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(247, 104, 0, 0.18), transparent 60%),
+        radial-gradient(800px 400px at -10% 20%, rgba(34, 34, 34, 0.06), transparent 60%);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(247, 104, 0, 0.12);
+      color: #cc5400;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    a.link {
+      color: #222222;
+      text-decoration: none;
+      text-underline-offset: 2px;
+    }
+
+    a.link:hover {
+      color: #f76800;
+    }
+
+    a.link:focus-visible {
+      outline: 3px solid #222;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .btn-primary {
+      background: #f76800;
+      color: #ffffff;
+      padding: 0.85rem 1.4rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      transition: transform .08s ease, background-color .15s;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary:hover {
+      background: #e15e00;
+    }
+
+    .btn-primary:active {
+      transform: translateY(1px);
+    }
+
+    .btn-primary:focus-visible {
+      outline: 3px solid #222;
+      outline-offset: 2px;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: #222222;
+      border: 1.5px solid #d4d4d4;
+      padding: 0.85rem 1.4rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      transition: border-color .15s, color .15s;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-secondary:hover {
+      border-color: #f76800;
+      color: #cc5400;
+    }
+
+    .btn-secondary:focus-visible {
+      outline: 3px solid #222;
+      outline-offset: 2px;
+    }
+
+    .fade-in {
+      animation: fadeIn .4s ease both;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* "Bless the grad" tip card — clearly optional Cash App ask */
+    .bless-card {
+      background: linear-gradient(135deg, #fff7ed 0%, #ffffff 60%);
+      border: 1px solid #fed7aa;
+      border-radius: 1rem;
+      padding: 1.5rem 1.75rem;
+    }
+
+    .bless-emoji {
+      font-size: 1.85rem;
+      line-height: 1;
+    }
+
+    .cashapp-handle {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-weight: 700;
+      font-size: 1.05rem;
+      background: #ffffff;
+      border: 1.5px dashed #f76800;
+      color: #cc5400;
+      padding: 0.5rem 0.9rem;
+      border-radius: 0.55rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      transition: background-color .15s;
+    }
+
+    .cashapp-handle:hover {
+      background: #fff7ed;
+    }
+
+    .cashapp-handle:focus-visible {
+      outline: 3px solid #222;
+      outline-offset: 2px;
+    }
+
+    .cashapp-handle.copied {
+      background: #ecfccb;
+      border-color: #65a30d;
+      color: #3f6212;
+    }
+
+    .btn-cashapp {
+      background: #00d54b;
+      color: #ffffff;
+      padding: 0.55rem 1rem;
+      border-radius: 0.55rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background-color .15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .btn-cashapp:hover {
+      background: #00b840;
+    }
+
+    .btn-cashapp:focus-visible {
+      outline: 3px solid #222;
+      outline-offset: 2px;
+    }
+
+    .countdown-chip {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      background: #222222;
+      color: #ffffff;
+      padding: 0.6rem 1.1rem;
+      border-radius: 0.75rem;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen">
+  <!-- HERO -->
+  <header class="hero-grad">
+    <div class="max-w-5xl mx-auto px-6 pt-10 pb-16 md:pt-16 md:pb-24">
+      <div class="flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <img src="mercer-logo.png" alt="Mercer University" class="h-10 w-10 md:h-12 md:w-12 object-contain" />
+          <span class="pill">
+            <span class="w-1.5 h-1.5 rounded-full bg-mercer-orange" aria-hidden="true"></span>
+            Mercer University · Class of 2026
+          </span>
+        </div>
+        <span class="text-sm text-mercer-ink font-medium hidden sm:block">Saturday, July 18 · 4:00 PM</span>
+      </div>
+
+      <div class="mt-10 grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="display text-5xl md:text-7xl leading-[0.95]">
+            It's almost<br />
+            <span class="text-mercer-orange">party time.</span>
+          </h1>
+          <p class="mt-6 text-lg text-mercer-black/85 max-w-md">
+            Just a friendly reminder — the graduation party for
+            <span class="font-semibold">Brian L. Moore</span> is
+            <span class="font-semibold">this Saturday</span>. You RSVP'd, you're on the list,
+            and we can't wait to see you.
+          </p>
+
+          <div class="mt-6 countdown-chip" id="countdown" role="status">
+            <span class="display text-2xl leading-none" id="countdown-num">—</span>
+            <span class="text-sm font-medium" id="countdown-label">days to go</span>
+          </div>
+
+          <dl class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-lg">
+            <div class="p-4 rounded-xl border border-gray-200 bg-white/60">
+              <dt class="text-xs uppercase tracking-wider text-mercer-ink font-semibold">Date</dt>
+              <dd class="mt-1 font-semibold">July 18, 2026</dd>
+            </div>
+            <div class="p-4 rounded-xl border border-gray-200 bg-white/60">
+              <dt class="text-xs uppercase tracking-wider text-mercer-ink font-semibold">Time</dt>
+              <dd class="mt-1 font-semibold">4:00 PM</dd>
+            </div>
+            <div class="p-4 rounded-xl border border-gray-200 bg-white/60">
+              <dt class="text-xs uppercase tracking-wider text-mercer-ink font-semibold">Venue</dt>
+              <dd class="mt-1 font-semibold">Essence Event Center</dd>
+            </div>
+            <div class="p-4 rounded-xl border border-gray-200 bg-white/60 md:col-span-3">
+              <dt class="text-xs uppercase tracking-wider text-mercer-ink font-semibold">Address</dt>
+              <dd class="mt-1 font-semibold"><a class="link"
+                  href="https://www.google.com/maps/search/?api=1&query=Essence+Event+Center+1126+US-321+Winnsboro+SC"
+                  target="_blank" rel="noopener noreferrer">
+                  1126 U.S. 321, Winnsboro, SC
+                </a>
+                <span class="sr-only">(opens Google Maps in a new tab)</span>
+              </dd>
+            </div>
+          </dl>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a class="btn-primary"
+              href="https://www.google.com/maps/search/?api=1&query=Essence+Event+Center+1126+US-321+Winnsboro+SC"
+              target="_blank" rel="noopener noreferrer">
+              Get directions <span aria-hidden="true">↗</span>
+            </a>
+            <a class="btn-secondary"
+              href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Brian%27s%20Graduation%20Party&dates=20260718T200000Z/20260719T010000Z&location=Essence%20Event%20Center%2C%201126%20US-321%2C%20Winnsboro%2C%20SC&details=Graduation%20party%20honoring%20Brian%20L.%20Moore%20%E2%80%94%20Mercer%20University%2C%20Class%20of%202026."
+              target="_blank" rel="noopener noreferrer">
+              Add to calendar <span aria-hidden="true">📅</span>
+            </a>
+          </div>
+
+          <p class="mt-6 text-sm text-mercer-ink">
+            Plans changed? No problem — just text Virginia Moore (Brian's mom) at
+            <a class="link" href="tel:+18037277751">803-727-7751</a>.
+          </p>
+        </div>
+
+        <div class="relative">
+          <img src="grad.jpg"
+            alt="Brian on graduation day at Mercer University, wearing cap and gown and holding a Mercer diploma"
+            class="aspect-[4/5] w-full rounded-2xl object-cover shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)]" />
+          <div class="absolute -bottom-4 -left-4 bg-mercer-orange text-white px-4 py-2 rounded-xl shadow-lg">
+            <div class="display text-lg leading-none">Class of 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-2xl mx-auto px-6 pb-24 -mt-8">
+    <!-- GOOD-TO-KNOW CARD -->
+    <section
+      class="bg-white rounded-2xl border border-gray-200 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)] p-6 md:p-10 fade-in"
+      aria-labelledby="know-heading">
+      <h2 id="know-heading" class="display text-3xl md:text-4xl">Good to know</h2>
+      <ul class="mt-6 space-y-4 text-mercer-black/85">
+        <li class="flex gap-3">
+          <span aria-hidden="true">✅</span>
+          <span><span class="font-semibold">You're all set.</span> Your RSVP is in — no need to do anything else.
+            Just show up hungry and ready to celebrate.</span>
+        </li>
+        <li class="flex gap-3">
+          <span aria-hidden="true">🍽️</span>
+          <span><span class="font-semibold">Food, music, and memories.</span> Dinner is on us — come as you are
+            and stay a while.</span>
+        </li>
+        <li class="flex gap-3">
+          <span aria-hidden="true">🕓</span>
+          <span><span class="font-semibold">Doors open at 4:00 PM.</span> Come on time so you don't miss a
+            thing.</span>
+        </li>
+        <li class="flex gap-3">
+          <span aria-hidden="true">📞</span>
+          <span><span class="font-semibold">Questions or a change of plans?</span> Text Virginia at
+            <a class="link font-semibold" href="tel:+18037277751">803-727-7751</a>.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- BLESS THE GRAD: optional Cash App tip -->
+    <section class="bless-card mt-8 fade-in" aria-labelledby="bless-heading">
+      <div class="flex items-start gap-4">
+        <div class="bless-emoji" aria-hidden="true">🎓</div>
+        <div class="flex-1 min-w-0">
+          <h3 id="bless-heading" class="display text-2xl">Want to bless the grad?</h3>
+          <p class="mt-2 text-mercer-ink">
+            No gift required — your presence is the celebration. But if you'd like to send Brian a little something to
+            mark the milestone, his Cash App is open:
+          </p>
+
+          <div class="mt-4 flex flex-wrap items-center gap-3">
+            <img alt="Cash App"
+              src="https://static.afterpaycdn.com/en-US/integration/logo/lockup/cashapp-color-black-32.svg" height="32"
+              width="auto" />
+            <button id="cashapp-copy" type="button" class="cashapp-handle"
+              aria-label="Copy Cash App handle $bmoore44 to clipboard">
+              <span id="cashapp-handle-text">$bmoore44</span>
+              <span aria-hidden="true">📋</span>
+            </button>
+            <a class="btn-cashapp" href="https://cash.app/$bmoore44" target="_blank" rel="noopener noreferrer"
+              aria-label="Open Cash App to send to $bmoore44 (opens in new tab)">
+              Open in Cash App <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <p class="mt-3 text-xs text-mercer-ink">Totally optional. Thank you either way! 🧡</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-10 text-center text-xs text-mercer-ink">
+      See you Saturday · Mercer University Class of 2026
+    </footer>
+  </main>
+
+  <script>
+    // Countdown to party day (local time, day-granularity)
+    (function () {
+      const party = new Date(2026, 6, 18, 16, 0, 0); // July 18, 2026, 4:00 PM local
+      const now = new Date();
+      const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const startOfParty = new Date(2026, 6, 18);
+      const days = Math.round((startOfParty - startOfToday) / 86400000);
+      const num = document.getElementById('countdown-num');
+      const label = document.getElementById('countdown-label');
+      if (days > 1) {
+        num.textContent = days;
+        label.textContent = 'days to go';
+      } else if (days === 1) {
+        num.textContent = '1';
+        label.textContent = 'day to go — tomorrow!';
+      } else if (days === 0) {
+        num.textContent = '🎉';
+        label.textContent = "It's today! See you at 4:00 PM";
+      } else {
+        num.textContent = '🧡';
+        label.textContent = 'Thanks for celebrating with us!';
+      }
+    })();
+
+    // Click-to-copy for the Cash App handle
+    const cashCopyBtn = document.getElementById('cashapp-copy');
+    if (cashCopyBtn) {
+      cashCopyBtn.addEventListener('click', async () => {
+        const handleSpan = document.getElementById('cashapp-handle-text');
+        const original = handleSpan.textContent;
+        try {
+          await navigator.clipboard.writeText('$bmoore44');
+          cashCopyBtn.classList.add('copied');
+          handleSpan.textContent = 'Copied!';
+          setTimeout(() => {
+            handleSpan.textContent = original;
+            cashCopyBtn.classList.remove('copied');
+          }, 1500);
+        } catch (e) {
+          // Clipboard API blocked (older browser / file://) — the link beside it still works.
+          handleSpan.textContent = 'Select & copy';
+          setTimeout(() => { handleSpan.textContent = original; }, 1800);
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
