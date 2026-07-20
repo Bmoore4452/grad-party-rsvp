@@ -8,3 +8,6 @@ supabase/.branches/
 
 # Private host tool with guest contact info — never deploy
 send-reminders.html
+send_texts.sh
+web-texter/
+send-thankyou.html
